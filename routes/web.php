@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/', ['as' => 'Login', 'uses' => 'LoginController@Index' ]);
+Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
+// ruta para iniciar sesion
+Route::post('IniciasSession', 'LoginController@show');

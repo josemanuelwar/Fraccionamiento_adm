@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_us')->nullable();
             $table->string('contrasena_us');
             $table->unsignedBigInteger('rol_us');
+            $table->unsignedBigInteger('id_fracionamiento')->nullable();
             //$table->foreignId('rol_us')->references('ID_ROL')->on('roles');
             $table->rememberToken();
 

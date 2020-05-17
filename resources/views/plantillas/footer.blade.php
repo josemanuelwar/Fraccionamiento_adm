@@ -11,6 +11,7 @@
       </div>
     </div>
  <!-- BEGIN VENDOR JS-->
+
  <script src="{{'app-assets/vendors/js/core/jquery-3.2.1.min.js'}}" type="text/javascript"></script>
  <script src="{{'app-assets/vendors/js/core/popper.min.js'}}" type="text/javascript"></script>
  <script src="{{'app-assets/vendors/js/core/bootstrap.min.js'}}" type="text/javascript"></script>
@@ -30,7 +31,18 @@
  <!-- END APEX JS-->
  <!-- BEGIN PAGE LEVEL JS-->
  {{-- <script src="{{'app-assets/js/dashboard1.js'}}" type="text/javascript"></script> --}}
+ 
+ <script >
+ $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+ </script>
+ 
  <!-- END PAGE LEVEL JS-->
+
+
 </body>
 <!-- END : Body-->
 </html>

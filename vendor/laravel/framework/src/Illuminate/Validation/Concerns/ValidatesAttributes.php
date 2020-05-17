@@ -654,6 +654,8 @@ trait ValidatesAttributes
                     return new SpoofCheckValidation();
                 } elseif ($validation === 'filter') {
                     return new FilterEmailValidation();
+                } elseif ($validation === 'filter_unicode') {
+                    return FilterEmailValidation::unicode();
                 }
             })
             ->values()
@@ -1442,6 +1444,25 @@ trait ValidatesAttributes
         [$values, $other] = $this->prepareValuesAndOther($parameters);
 
         return in_array($other, $values);
+    }
+
+    /**
+     * Indicate that an attribute should be excluded when another attribute is missing.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @param  mixed  $parameters
+     * @return bool
+     */
+    public function validateExcludeWithout($attribute, $value, $parameters)
+    {
+        $this->requireParameterCount(1, $parameters, 'exclude_without');
+
+        if ($this->anyFailingRequired($parameters)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

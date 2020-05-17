@@ -22,3 +22,5 @@ Route::get('/', ['as' => 'Login', 'uses' => 'LoginController@Index' ]);
 Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
 // ruta para iniciar sesion
 Route::post('IniciasSession', 'LoginController@show');
+
+Route::get('Registro_frac','AdministradorController@Registro_de_fracionamientos');

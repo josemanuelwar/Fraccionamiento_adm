@@ -1917,6 +1917,8 @@ return array(
     'Laravel\\Ui\\Presets\\Vue' => $vendorDir . '/laravel/ui/src/Presets/Vue.php',
     'Laravel\\Ui\\UiCommand' => $vendorDir . '/laravel/ui/src/UiCommand.php',
     'Laravel\\Ui\\UiServiceProvider' => $vendorDir . '/laravel/ui/src/UiServiceProvider.php',
+    'Laraveles\\Spanish\\Commands\\InstallLang' => $vendorDir . '/laraveles/spanish/src/Commands/InstallLang.php',
+    'Laraveles\\Spanish\\SpanishServiceProvider' => $vendorDir . '/laraveles/spanish/src/SpanishServiceProvider.php',
     'League\\CommonMark\\Block\\Element\\AbstractBlock' => $vendorDir . '/league/commonmark/src/Block/Element/AbstractBlock.php',
     'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => $vendorDir . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
     'League\\CommonMark\\Block\\Element\\BlockQuote' => $vendorDir . '/league/commonmark/src/Block/Element/BlockQuote.php',

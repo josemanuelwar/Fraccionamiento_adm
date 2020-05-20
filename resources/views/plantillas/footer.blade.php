@@ -32,6 +32,9 @@
  <!-- BEGIN PAGE LEVEL JS-->
  {{-- <script src="{{'app-assets/js/dashboard1.js'}}" type="text/javascript"></script> --}}
  
+<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/localization/messages_es.js"></script>
+
  <script >
  $.ajaxSetup({
     headers: {

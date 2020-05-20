@@ -23,7 +23,7 @@
                 <i class="ft-home"></i>
                 <span data-i18n="" class="menu-title">Administradores</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">2</span></a>
                   <ul class="menu-content">
-                    <li><a href="Registro_frac" class="menu-item">Agregar Fraccionamientos</a>
+                    <li><a href="Agregar_region" class="menu-item">Agregar Regiones</a>
                     </li>
                     <li><a href="dashboard2.html" class="menu-item">Ver Arministradores</a>
                     </li>

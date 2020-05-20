@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('apm_us');
             $table->string('nick_us')->unique();
             $table->string('rfc_us');
-            $table->integer('numerodecasa_us');
+            $table->integer('numerodecasa_us')->nullable();
             $table->string('email_us')->unique();
-            $table->timestamp('email_verified_us')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('contrasena_us');
             $table->unsignedBigInteger('rol_us');
             $table->unsignedBigInteger('id_fracionamiento')->nullable();

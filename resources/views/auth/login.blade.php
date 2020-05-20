@@ -22,59 +22,78 @@
                                                 <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
                                                     <form method="POST" action="{{ route('login') }}" novalidate>
                                                         @csrf
-                                                    <h4 class="mb-2 card-title">Login</h4>
+                                                    <h4 class="mb-2 card-title">Iniciar sesión</h4>
                                                     <p class="card-text mb-3">
-                                                        Welcome back, please login to your account.
+                                                        Bienvenido de nuevo, inicie sesión en su cuenta.
                                                     </p>
-                                                        <div class="form-group">
-                                                            <h5>Basic Text Input <span class="required">*</span></h5>
+                                                        <div class="form-group mt-4">
                                                             <div class="controls mb-1">
-                                                                <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required">
-                                                                <div class="help-block"></div></div>
-                                                            <p>Add <code>required</code> attribute to field for required validation.</p>
+                                                                <input type="email" name="email_us" required autofocus autocomplete="email"
+                                                                       class="form-control @error('email_us') is-invalid @enderror"
+                                                                       value="{{ old('email_us') }}"  placeholder="Correo"
+                                                                       data-validation-required-message="Este campo es requerido"
+                                                                        data-validation-email-message="Formato de no valido">
+                                                                <div class="help-block">
+                                                                    @error('email_us')
+                                                                    <ul class="text-danger" role="alert">
+                                                                       <li>{{ $message }}</li>
+                                                                    </ul>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    <input type="text" class="form-control mb-3" placeholder="Username" />
-                                                    <input type="password" class="form-control mb-1" placeholder="Password" />
+                                                        <div class="form-group">
+                                                            <div class="controls mb-4">
+                                                                <input type="password" name="password" required
+                                                                       class="form-control @error('password') is-invalid @enderror"
+                                                                        placeholder="Contraseña"
+                                                                       data-validation-required-message="Este campo es requerido">
+
+                                                                <div class="help-block">
+                                                                    @error('password')
+                                                                    <ul class="text-danger" role="alert">
+                                                                        <li>{{ $message }}</li>
+                                                                    </ul>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     <div class="d-flex justify-content-between mt-2">
                                                         <div class="remember-me">
                                                             <div class="custom-control custom-checkbox custom-control-inline mb-3">
-                                                                <input type="checkbox" id="customCheckboxInline1" name="customCheckboxInline1" class="custom-control-input" />
-                                                                <label class="custom-control-label" for="customCheckboxInline1">
-                                                                    Remember Me
+                                                                <input type="checkbox" id="remember" name="remember" class="custom-control-input" {{ old('remember') ? 'checked' : '' }} />
+                                                                <label class="custom-control-label" for="remember">
+                                                                    Recordarme
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="forgot-password-option">
-                                                            <a href="forgot-password-page.html" class="text-decoration-none text-primary">Forgot Password
-                                                                ?</a>
+                                                            <a href="{{ route('password.request') }}" class="text-decoration-none text-primary">¿Olvidó contraseñá ?</a>
                                                         </div>
                                                     </div>
                                                     <div class="fg-actions d-flex justify-content-between">
                                                         <div class="login-btn">
-                                                            <button class="btn btn-outline-primary">
-                                                                <a href="register-page.html" class="text-decoration-none">Register</a>
-                                                            </button>
+                                                                <a href="{{route('register')}}" class="btn btn-outline-primary text-decoration-none">Registrarme</a>
                                                         </div>
                                                         <div class="recover-pass">
-                                                            <button class="btn btn-primary">
-                                                                <a href="dashboard1.html" class="text-decoration-none text-white">Login</a>
-                                                            </button>
+                                                            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
                                                         </div>
                                                     </div>
-                                                    <hr class="m-0">
-                                                    <div class="d-flex justify-content-between mt-3">
-                                                        <div class="option-login">
-                                                            <h6 class="text-decoration-none text-primary">Or Login With</h6>
-                                                        </div>
-                                                        <div class="social-login-options">
-                                                            <a class="btn btn-social-icon mr-2 btn-facebook">
-                                                                <span class="fa fa-facebook"></span>
-                                                            </a>
-                                                            <a class="btn btn-social-icon mr-2 btn-twitter">
-                                                                <span class="fa fa-twitter"></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+{{--                                                    <hr class="m-0">--}}
+{{--                                                    <div class="d-flex justify-content-between mt-3">--}}
+{{--                                                        <div class="option-login">--}}
+{{--                                                            <h6 class="text-decoration-none text-primary">Or Login With</h6>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="social-login-options">--}}
+{{--                                                            <a class="btn btn-social-icon mr-2 btn-facebook">--}}
+{{--                                                                <span class="fa fa-facebook"></span>--}}
+{{--                                                            </a>--}}
+{{--                                                            <a class="btn btn-social-icon mr-2 btn-twitter">--}}
+{{--                                                                <span class="fa fa-twitter"></span>--}}
+{{--                                                            </a>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                     </form>
                                                 </div>
                                             </div>
@@ -93,78 +112,4 @@
     </div>
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
-
 @include('plantillas.footer')
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control @error('email_us') is-invalid @enderror" name="email_us" value="{{ old('email_us') }}" required autocomplete="email" autofocus>
-
-                                @error('email_us')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection

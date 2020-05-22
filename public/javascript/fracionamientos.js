@@ -41,7 +41,7 @@ Estado=()=>{
             {
                 var estados;
                 for (let index = 0; index < itm.length; index++) {
-                    estados = '<option value="'+itm[index].ID_ESTADO+'">'+itm[index].NOMBRE_ESTADO+'</option>'
+                    estados += '<option value="'+itm[index].ID_ESTADO+'">'+itm[index].NOMBRE_ESTADO+'</option>'
                 }
                 $('#estado').html(estados);
             }else
@@ -69,7 +69,7 @@ municipio=()=>{
             {
                 var mun;
                 for (let index = 0; index < itm.length; index++) {
-                    mun = '<option value="'+itm[index].ID_MUNICIPIO+'">'+itm[index].NOMBRE_MUNICIPIO+'</option>';
+                    mun += '<option value="'+itm[index].ID_MUNICIPIO+'">'+itm[index].NOMBRE_MUNICIPIO+'</option>';
                 }
                 $('#municipio').html(mun);
             }

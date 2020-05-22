@@ -23,7 +23,7 @@
 
 <div class="card">
     <div class="card-body">
-        <table class="table">
+        <table class="table" id="tabla">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -37,28 +37,58 @@
         </table>
     </div>
 </div>
-<div class="modal modal-info fade" id="modal-info">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Info Modal</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
 
 
 @include('plantillas.Endsection')
-@include('plantillas.footer')
 <script src="javascript/Paiscrud.js"></script>
+@include('plantillas.footer')
+              <div class="modal" id="Editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel1">Editar Pais</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div>
+										        <fieldset class="form-group">
+											        <label for="roundText">Pais</label>
+											          <input type="text" id="pais_nom" class="form-control round" placeholder="">
+										          </fieldset>
+									        </div>
+                          <input type="hidden" name="id_pais" id="paiss">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-outline-primary" onclick="Guardar();">Guardar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="modal" id="Eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel1">Editar Pais</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div>
+                            Esta seguro de Eliminar el pais ?
+										      </div>
+                          <input type="hidden" name="id_pais" id="paisElim">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-outline-primary" onclick="Eliminar();">Eliminar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>

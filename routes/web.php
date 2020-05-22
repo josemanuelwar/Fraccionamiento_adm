@@ -30,3 +30,9 @@ Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunic
 
 Route::get('Agregar_region','SuperAdminController@index');
 Route::post('/agregarpais','SuperAdminController@Guardar_pais_ajax');
+Route::get('GetPais/{id}','SuperAdminController@GetPais')->name('getpaises');
+Route::put('/actualizarpais/{id}','SuperAdminController@actualizarpais')->name('actualizar');
+Route::delete('eliminarpais/{id}','SuperAdminController@Eliminarpais')->name('Eliminar');
+/**gragar estados */
+Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
+Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');

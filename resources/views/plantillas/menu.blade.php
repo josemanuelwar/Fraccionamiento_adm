@@ -31,11 +31,15 @@
                   </ul>
               </li>
 
-              <li class=" nav-item">
-                <a href="color-palette.html">
-                  <i class="ft-droplet"></i>
-                  <span data-i18n="" class="menu-title">Color Palette</span>
-                </a>
+              <li class="has-sub nav-item"><a href="#">
+                <i class="ft-home"></i>
+                <span data-i18n="" class="menu-title">Registro de ingresos</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">2</span></a>
+                  <ul class="menu-content">
+                    <li><a href="Registro_frac" class="menu-item">Agregar Fraccionamientos</a>
+                    </li>
+                    <li><a href="dashboard2.html" class="menu-item">Ver Arministradores</a>
+                    </li>
+                  </ul>
               </li>
 
               <li class=" nav-item">

@@ -30,11 +30,35 @@
                   </ul>
               </li>
 
-              <li class=" nav-item">
-                <a href="color-palette.html">
-                  <i class="ft-droplet"></i>
-                  <span data-i18n="" class="menu-title">Color Palette</span>
-                </a>
+              <li class="has-sub nav-item"><a href="#">
+                <i class="ft-book"></i>
+                <span data-i18n="" class="menu-title">Registro de ingresos</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1"></span></a>
+                  <ul class="menu-content">
+                    <li><a href="#" class="menu-item">Ingresos mensual (cuota)</a>
+                    </li>
+                    <li><a href="#" class="menu-item">Otros ingresos</a>
+                    </li>
+
+
+                    <li class="has-sub nav-item"><a href="#">
+                      <i class=""></i>
+                      <span data-i18n="" class="menu-title">Ingresos por sansion</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1"></span></a>
+                        <ul class="menu-content">
+                          <li><a href="#" class="menu-item">Infracción y montos</a>
+                          </li>
+                          <li><a href="#" class="menu-item">Transferencia</a>
+                          </li>
+                          <li><a href="#" class="menu-item">Asignasion masiva</a>
+                          </li>
+                          <li><a href="#" class="menu-item"></a>
+                          </li>
+                        </ul>
+                    </li>
+
+
+                    <li><a href="#" class="menu-item">Ingresos por comision</a>
+                    </li>
+                  </ul>
               </li>
 
               <li class=" nav-item">

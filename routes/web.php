@@ -13,32 +13,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 
-Route::get('/', ['as' => 'Login', 'uses' => 'LoginController@Index' ]);
-Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
-// ruta para iniciar sesion
-Route::post('IniciasSession', 'LoginController@show');
-/** rutas de jose manuel */
-Route::get('Registro_frac','AdministradorController@Registro_de_fracionamientos');
-Route::get('/recupear_pais','AdministradorController@Recuperarpais_ajax');
-Route::get('recuperar_estados/{id}','AdministradorController@RecuperarEstado');
-Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunicipios');
+Route::middleware(['auth','verified'])->group(function (){
+    Route::get('/', 'AdministradorController@principal');
+    Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
 
-Route::get('Agregar_region','SuperAdminController@index');
-Route::post('/agregarpais','SuperAdminController@Guardar_pais_ajax');
-Route::get('GetPais/{id}','SuperAdminController@GetPais')->name('getpaises');
-Route::put('/actualizarpais/{id}','SuperAdminController@actualizarpais')->name('actualizar');
-Route::delete('eliminarpais/{id}','SuperAdminController@Eliminarpais')->name('Eliminar');
-/**gragar estados */
-Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
-Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');
-Route::get('GetEstado/{id}','SuperAdminController@GetEstado')->name('getEstado');
-Route::put('updateEstado/{id}','SuperAdminController@updateEstado')->name('updateEstado');
-Route::delete('deleEstado/{id}','SuperAdminController@deleEstado')->name('deleEstado');
+    /** rutas josemauel */
+    Route::get('Registro_frac','AdministradorController@Registro_de_fracionamientos');
+    Route::get('recupear_pais','AdministradorController@Recuperarpais_ajax');
+    Route::get('recuperar_estados/{id}','AdministradorController@RecuperarEstado');
+    Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunicipios');
+    /**Alta a lo pasis y estados */
+    Route::get('Agregar_region','SuperAdminController@index');
+    Route::post('/agregarpais','SuperAdminController@Guardar_pais_ajax');
+    Route::get('GetPais/{id}','SuperAdminController@GetPais')->name('getpaises');
+    Route::put('/actualizarpais/{id}','SuperAdminController@actualizarpais')->name('actualizar');
+    Route::delete('eliminarpais/{id}','SuperAdminController@Eliminarpais')->name('Eliminar');
+    /**gragar estados */
+    Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
+    Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');
+    Route::get('GetEstado/{id}','SuperAdminController@GetEstado')->name('getEstado');
+    Route::put('updateEstado/{id}','SuperAdminController@updateEstado')->name('updateEstado');
+    Route::delete('deleEstado/{id}','SuperAdminController@deleEstado')->name('deleEstado');
+
+
+
+});
+
+// Rutas para iniciar sesión
+Auth::routes(['verify'=>true]);
+
+
 
 
 // ******** //// ********************////////////////

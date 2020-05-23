@@ -18,14 +18,14 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
-              
+
               <li class="has-sub nav-item"><a href="#">
                 <i class="ft-home"></i>
                 <span data-i18n="" class="menu-title">Administradores</span><span class="tag badge badge-pill badge-danger float-right mr-1 mt-1">2</span></a>
                   <ul class="menu-content">
-                    <li><a href="Registro_frac" class="menu-item">Agregar Fraccionamientos</a>
+                    <li><a href="Agregar_region" class="menu-item">Agregar Pais</a>
                     </li>
-                    <li><a href="dashboard2.html" class="menu-item">Ver Arministradores</a>
+                    <li><a href="EstadosView" class="menu-item">Agregar Estados</a>
                     </li>
                   </ul>
               </li>
@@ -64,7 +64,7 @@
                   <span data-i18n="" class="menu-title">Calendar</span>
                 </a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -106,7 +106,7 @@
                 <li class="dropdown nav-item"><a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-user font-medium-3 blue-grey darken-4"></i>
                     <p class="d-none">User Settings</p></a>
                   <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu text-left dropdown-menu-right"><a href="../../../html/html/ltr/chat.html" class="dropdown-item py-1"><i class="ft-message-square mr-2"></i><span>Chat</span></a><a href="../../../html/html/ltr/user-profile-page.html" class="dropdown-item py-1"><i class="ft-edit mr-2"></i><span>Edit Profile</span></a><a href="../../../html/html/ltr/inbox.html" class="dropdown-item py-1"><i class="ft-mail mr-2"></i><span>My Inbox</span></a>
-                    <div class="dropdown-divider"></div><a href="../../../html/html/ltr/login-page.html" class="dropdown-item"><i class="ft-power mr-2"></i><span>Logout</span></a>
+                      <form action="{{ route('logout') }}" method="POST"><div class="dropdown-divider"></div>@csrf<button class="dropdown-item w-100"  type="submit"><i class="ft-power mr-2"></i><span>Logout</span></button></form>
                   </div>
                 </li>
                 <li class="nav-item d-none d-lg-block"><a href="javascript:;" class="nav-link position-relative notification-sidebar-toggle"><i class="ft-align-left font-medium-3 blue-grey darken-4"></i>
@@ -116,4 +116,3 @@
           </div>
         </div>
       </nav>
-      

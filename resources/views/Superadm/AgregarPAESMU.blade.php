@@ -14,7 +14,7 @@
     <form id="formpais">
         <div class="form-group">
             <label for="exampleInputEmail1">Agregar pais</label>
-            <input type="text" class="form-control" id="pais" name="nombre" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="pais" name="pais">
         </div>
         <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
     </form>    
@@ -62,7 +62,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Cerrar</button>
-                          <button type="button" class="btn btn-outline-primary" onclick="Guardar();">Guardar</button>
+                          <button type="button" class="btn btn-outline-primary" onclick="Editar();">Guardar</button>
                         </div>
                       </div>
                     </div>

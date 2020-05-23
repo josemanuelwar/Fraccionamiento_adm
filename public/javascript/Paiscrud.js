@@ -82,7 +82,7 @@ $(function () {
     });
 });
 
-Guardar=()=>{
+Editar=()=>{
     var id_pais=$('#paiss').val();
     var pais=$('#pais_nom').val();
     if(id_pais==""){

@@ -51,7 +51,7 @@ Guardar=()=>{
         
                     llenar();
                     $("#buena").html("Agragado Correctamente").fadeIn().delay(4000).fadeOut('snow');
-                
+                    document.getElementById("pais").value="";
             },
             error:function(error) 
             {

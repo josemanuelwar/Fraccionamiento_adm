@@ -22,9 +22,9 @@ Route::get('/', ['as' => 'Login', 'uses' => 'LoginController@Index' ]);
 Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
 // ruta para iniciar sesion
 Route::post('IniciasSession', 'LoginController@show');
-
+/** rutas de jose manuel */
 Route::get('Registro_frac','AdministradorController@Registro_de_fracionamientos');
-Route::get('recupear_pais','AdministradorController@Recuperarpais_ajax');
+Route::get('/recupear_pais','AdministradorController@Recuperarpais_ajax');
 Route::get('recuperar_estados/{id}','AdministradorController@RecuperarEstado');
 Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunicipios');
 
@@ -36,6 +36,9 @@ Route::delete('eliminarpais/{id}','SuperAdminController@Eliminarpais')->name('El
 /**gragar estados */
 Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
 Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');
+Route::get('GetEstado/{id}','SuperAdminController@GetEstado')->name('getEstado');
+Route::put('updateEstado/{id}','SuperAdminController@updateEstado')->name('updateEstado');
+Route::delete('deleEstado/{id}','SuperAdminController@deleEstado')->name('deleEstado');
 
 
 // ******** //// ********************////////////////

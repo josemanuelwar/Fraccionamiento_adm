@@ -36,3 +36,7 @@ Route::delete('eliminarpais/{id}','SuperAdminController@Eliminarpais')->name('El
 /**gragar estados */
 Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
 Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');
+
+
+// ******** //// ********************////////////////
+// RUTAS DE EDUARDO CERVANTES

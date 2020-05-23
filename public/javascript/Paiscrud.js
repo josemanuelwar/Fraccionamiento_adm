@@ -51,7 +51,7 @@ Guardar=()=>{
         
                     llenar();
                     $("#buena").html("Agragado Correctamente").fadeIn().delay(4000).fadeOut('snow');
-                
+                    document.getElementById("pais").value="";
             },
             error:function(error) 
             {
@@ -82,7 +82,7 @@ $(function () {
     });
 });
 
-Guardar=()=>{
+Editar=()=>{
     var id_pais=$('#paiss').val();
     var pais=$('#pais_nom').val();
     if(id_pais==""){

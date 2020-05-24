@@ -85,7 +85,7 @@ guardar=()=>{
             },
             error:function(ex)
             {
-                console.log(ex);
+                $('#error').html("Error  al conectarse al servidor").fadeIn().delay(4000).fadeOut('snow');
             }
         })
     }
@@ -101,13 +101,12 @@ llenar=()=>{
         async:false,
         dataType:'json',
         success:function (itm) {
-            console.log(itm);
             var tabla;
                 for (let index = 0; index < itm.length; index++) {
                     tabla+='<tr><th scope="row">'+itm[index].ID_ESTADO+'</th> <td>'
                     +itm[index].NOMBRE_ESTADO+'</td> <td>'
-                    +'<a href="javascript:;" style="width: 30%;" class="btn btn-block btn-warning" data="'+itm[index].ID_PAIS+'"><i class="fa fa-fw fa-refresh"></i></a>'
-                    +'<a href="javascript:;" style="width: 30%;" class="btn -blobtnck btn-danger" data="'+itm[index].ID_PAIS+'"><i class="fa fa-fw fa-remove"></i></a>'
+                    +'<a href="javascript:;" style="width: 30%;" class="btn btn-block btn-warning" data="'+itm[index].ID_ESTADO+'"><i class="fa fa-fw fa-refresh"></i></a>'
+                    +'<a href="javascript:;" style="width: 30%;" class="btn -blobtnck btn-danger" data="'+itm[index].ID_ESTADO+'"><i class="fa fa-fw fa-remove"></i></a>'
                     +'</td></tr>';
                 }
             
@@ -117,4 +116,93 @@ llenar=()=>{
             $('#error').html("Error en la cominicasion con el servidor").fadeIn().delay(4000).fadeOut('snow');
         }
     });    
+}
+
+$(function(){
+    $('.btn-warning').on('click',function(){
+        var id_estado=$(this).attr('data');
+            $.ajax({
+                type:"ajax",
+                method:"get",
+                url:"GetEstado/"+id_estado,
+                async:'false',
+                dataType:'json',
+                success:function(itm){
+                    $('#Estado_nombre').val(itm[0].NOMBRE_ESTADO);
+                    $('#estado').val(itm[0].ID_ESTADO);
+                },
+                error:function(error){
+                    $('#error').html("Error en la cominicasion con el servidor").fadeIn().delay(4000).fadeOut('snow');
+                }
+            });         
+        $('#EditarEstado').modal('show');
+
+    })
+});
+
+Editar=()=>{
+    var id_estados=$('#estado').val();
+    var Estado=$('#Estado_nombre').val();
+    if(Estado==""){
+        $('#error').html("Error falta el nombre").fadeIn().delay(4000).fadeOut('snow');
+    }else
+    {
+        var dato={
+            'id_estado':id_estados,
+            'estado':Estado
+        }
+        $.ajax({
+            type:'ajax',
+            method:'put',
+            url:'updateEstado/'+id_estados,
+            async:'false',
+            dataType:'json',
+            data:dato,
+            success:function(itm){
+                if(itm==1){
+                    llenar();
+                    $("#buena").html("Se ha actualizado  Correctamente").fadeIn().delay(4000).fadeOut('snow');
+                    $('#EditarEstado').modal('hide');                   
+                }else{
+                    $('#error').html("Error al actualizar").fadeIn().delay(4000).fadeOut('snow');                   
+                }
+            },
+            error:function(erro){
+                $('#error').html("Error  al conectarse al servidor").fadeIn().delay(4000).fadeOut('snow');
+            }
+        });
+    }
+    
+}
+
+$(function(){
+    $('.btn-danger').on('click',function(){
+        var id_estado=$(this).attr('data');
+        $('#EsatadoElim').val(id_estado);
+        $('#Eliminaresatado').modal('show');
+    })
+});
+
+Eliminar=()=>{
+    var id_esatdo=$('#EsatadoElim').val();
+    
+    $.ajax({
+        type:'ajax',
+        method:'delete',
+        url:'deleEstado/'+id_esatdo,
+        async:'false',
+        dataType:'json',
+        success:function(itm){
+            if(itm==1){
+                llenar();
+                $("#buena").html("Se ha Eliminado  Correctamente").fadeIn().delay(4000).fadeOut('snow');
+                $('#Eliminaresatado').modal('hide');               
+            }else{
+                $('#error').html("Error al Eliminar").fadeIn().delay(4000).fadeOut('snow');
+                $('#Eliminaresatado').modal('hide');               
+            }
+        },erro:function(erroe){
+            $('#error').html("Error  al conectarse al servidor").fadeIn().delay(4000).fadeOut('snow');
+        }
+    });
 }

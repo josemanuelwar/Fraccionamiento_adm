@@ -1,6 +1,6 @@
- 
- 
- 
+
+
+
 
         <!-- BEGIN : Footer-->
         <footer class="footer footer-static footer-light">
@@ -10,7 +10,6 @@
 
       </div>
     </div>
- 
  
  <!-- END PAGE LEVEL JS-->
 

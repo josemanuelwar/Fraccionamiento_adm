@@ -131,6 +131,7 @@ class SuperAdminController extends Controller
     }
     
 
+
     //funcion para traer los municipios de los modales
     public function MunicipioGet(Request $request) {
         $municipios = municipios::TraerMun($request->id_municipio);
@@ -145,6 +146,30 @@ class SuperAdminController extends Controller
         return response()->json([
             'municipios'=>1
         ]);
+    }
+
+    public function GetEstado($id_estado)
+    {
+       
+        $estado=new estado();
+        $est=$estado::select('ID_ESTADO','NOMBRE_ESTADO')->where('ID_ESTADO',$id_estado)->get();
+        return response()->json($est);
+
+    }
+    public function updateEstado(Request $request,$id)
+    {
+        $estados=new estado();
+        $estad=$estados::where('ID_ESTADO', $id)->update(['NOMBRE_ESTADO'=>$request->estado]);
+        return response()->json($estad);
+    }
+
+    public function deleEstado($id_estado)
+    {
+       
+        $estado=new estado();
+        $esta=$estado->Eliminar($id_estado);
+        return response()->json($esta);
+
     }
     
 

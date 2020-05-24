@@ -33,7 +33,6 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
     public static $prefixLengthsPsr4 = array (
         'v' => 
         array (
-            'voku\\tests\\' => 11,
             'voku\\' => 5,
         ),
         'p' => 
@@ -111,6 +110,7 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         array (
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laraveles\\Spanish\\' => 18,
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
         ),
@@ -163,10 +163,6 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\tests\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/voku/portable-ascii/tests',
-        ),
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
@@ -345,6 +341,10 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laraveles\\Spanish\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laraveles/spanish/src',
+        ),
         'Laravel\\Ui\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/src',
@@ -468,8 +468,16 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdministradorController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdministradorController.php',
+        'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
+        'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
+        'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
+        'App\\Http\\Controllers\\RegistroIngresos' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistroIngresos.php',
+        'App\\Http\\Controllers\\SuperAdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuperAdminController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -2000,6 +2008,7 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         'Illuminate\\Http\\Middleware\\CheckResponseForModifications' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/CheckResponseForModifications.php',
         'Illuminate\\Http\\Middleware\\FrameGuard' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/FrameGuard.php',
         'Illuminate\\Http\\Middleware\\SetCacheHeaders' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/SetCacheHeaders.php',
+        'Illuminate\\Http\\Middleware\\TrustHosts' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Middleware/TrustHosts.php',
         'Illuminate\\Http\\RedirectResponse' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/RedirectResponse.php',
         'Illuminate\\Http\\Request' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Request.php',
         'Illuminate\\Http\\Resources\\CollectsResources' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Resources/CollectsResources.php',
@@ -2370,6 +2379,8 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
         'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
         'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
+        'Laraveles\\Spanish\\Commands\\InstallLang' => __DIR__ . '/..' . '/laraveles/spanish/src/Commands/InstallLang.php',
+        'Laraveles\\Spanish\\SpanishServiceProvider' => __DIR__ . '/..' . '/laraveles/spanish/src/SpanishServiceProvider.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',
@@ -2593,17 +2604,12 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
-        'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV5.php',
-        'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV6' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV6.php',
-        'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV7' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV7.php',
-        'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerTrait' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerTrait.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
-        'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious.php',
-        'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditionsForV8' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditionsForV8.php',
+        'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
-        'Mockery\\Adapter\\Phpunit\\MockeryTestCaseSetUpForV7AndPrevious' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCaseSetUpForV7AndPrevious.php',
-        'Mockery\\Adapter\\Phpunit\\MockeryTestCaseSetUpForV8' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCaseSetUpForV8.php',
+        'Mockery\\Adapter\\Phpunit\\MockeryTestCaseSetUp' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCaseSetUp.php',
         'Mockery\\Adapter\\Phpunit\\TestListener' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListener.php',
+        'Mockery\\Adapter\\Phpunit\\TestListenerTrait' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListenerTrait.php',
         'Mockery\\ClosureWrapper' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/ClosureWrapper.php',
         'Mockery\\CompositeExpectation' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CompositeExpectation.php',
         'Mockery\\Configuration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Configuration.php',
@@ -3903,6 +3909,7 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'RoleSeeder' => __DIR__ . '/../..' . '/database/seeds/RoleSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

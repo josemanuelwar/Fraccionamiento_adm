@@ -16,4 +16,10 @@ class estado extends Model
                     ->get();
         return $estados;
     }
+    
+    public function Eliminar($id)
+    {
+        $el=DB::table('estados')->where('ID_ESTADO', '=', $id)->delete();
+        return $el;
+    }
 }

@@ -7,7 +7,7 @@ llenar=()=>{
     $.ajax({
         type:"ajax",
         method:"get",
-        url:"recupear_pais",
+        url:"/recupear_pais",
         async:false,
         dataType:'json',
         success:function (itm) {
@@ -49,7 +49,6 @@ Guardar=()=>{
             data:json,
             success:function(itm)
             {
-        
                     llenar();
                     $("#buena").html("Agragado Correctamente").fadeIn().delay(4000).fadeOut('snow');
                     document.getElementById("pais").value="";

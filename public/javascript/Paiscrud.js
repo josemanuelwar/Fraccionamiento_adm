@@ -28,6 +28,7 @@ llenar=()=>{
 }
 
 Guardar=()=>{    
+    // console.log("hola mundo");
     var pais=$('#pais').val();
     if(pais=="")
     {
@@ -42,7 +43,7 @@ Guardar=()=>{
         $.ajax({
             type:'ajax',
             method:'post',
-            url:'/agregarpais',
+            url:'agregarpais',
             async:false,
             dataType:'json',
             data:json,
@@ -97,7 +98,7 @@ Editar=()=>{
         $.ajax({
             type:'ajax',
             method:'put',
-            url:'/actualizarpais/'+id_pais,
+            url:'actualizarpais/'+id_pais,
             async:'false',
             dataType:'json',
             data:json,

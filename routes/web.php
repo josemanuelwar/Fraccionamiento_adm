@@ -29,9 +29,9 @@ Route::get('recuperar_estados/{id}','AdministradorController@RecuperarEstado');
 Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunicipios');
 
 Route::get('Agregar_region','SuperAdminController@index');
-Route::post('/agregarpais','SuperAdminController@Guardar_pais_ajax');
+Route::post('agregarpais','SuperAdminController@Guardar_pais_ajax');
 Route::get('GetPais/{id}','SuperAdminController@GetPais')->name('getpaises');
-Route::put('/actualizarpais/{id}','SuperAdminController@actualizarpais')->name('actualizar');
+Route::put('actualizarpais/{id}','SuperAdminController@actualizarpais')->name('actualizar');
 Route::delete('eliminarpais/{id}','SuperAdminController@Eliminarpais')->name('Eliminar');
 /**gragar estados */
 Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
@@ -40,3 +40,17 @@ Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarE
 
 // ******** //// ********************////////////////
 // RUTAS DE EDUARDO CERVANTES
+// vista para los municipios
+Route::get('AgegarMunicipios','SuperAdminController@AgegarMunicipios')->name('AgegarMunicipios');
+//traer por ajax todos los estados
+Route::post('TraerEstados','SuperAdminController@TraerEstados')->name('TraerEstados');
+//ruta para guardar los municipios
+Route::post('GuardarMunicipio', 'SuperAdminController@GuardarMunicipio')->name('GuardarMunicipio');
+//mostrar los municipios en la vista
+Route::get('TraerMunicipios', 'SuperAdminController@TraerMunicipios')->name('TraerMunicipios');
+//Traer los municipios para el modal 
+Route::post('MunicipioGet', 'SuperAdminController@MunicipioGet')->name('MunicipioGet');
+//actualizar el municipio
+Route::post('ActualizarMunicipio', 'SuperAdminController@ActualizarMunicipio')->name('ActualizarMunicipio');
+// RUTAS DE EDUARDO CERVANTES
+// ******** //// ********************////////////////

@@ -15,6 +15,15 @@ class pais extends Model
         return $el;
     }
 
+    public static function getPaises() {
+        $data = DB::table('pais')
+                    ->select('*')
+                    ->get();
 
+
+        return $data;
+    }
+
+    
     
 }

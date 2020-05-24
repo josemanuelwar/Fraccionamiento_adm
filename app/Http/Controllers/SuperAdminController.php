@@ -14,6 +14,7 @@ class SuperAdminController extends Controller
 
     public function Guardar_pais_ajax(Request $request)
     {
+        
         $validador=\Validator::make($request->all(),[
             'pais'=>'required'
         ]);
@@ -77,7 +78,74 @@ class SuperAdminController extends Controller
 
         }              
     }
+
+
+    //funcion para agregar municipios
+    public function AgegarMunicipios() {
+        $paises = pais::getPaises();
+        return view('Superadm.AgregarMunicipio', array(
+            'paises'=>$paises
+        ));
+
+    }
+
+    //funcion que trae los estados en la vista de agregar municipios
+    public function TraerEstados(Request $request) {
+        $validador=\Validator::make($request->all(),[
+            'id_pais'=>'required',
+        ]);
+        if($validador->fails()){
+            response()->json("flase");
+        }
+        else {
+            $estados = estado::getEstados($request->id_pais);
+            return response()->json([
+                'estados'=>$estados
+
+            ]);
+        }
+    }
+
+    //funcion para guardar los municipios
+    public function GuardarMunicipio(Request $request) {
+        $validador=\Validator::make($request->all(),[
+            'id_estado'=>'required',
+            'municipio'=>'required'
+        ]);
+        if($validador->fails()){
+            response()->json("flase");
+        }
+        else {
+
+            $municipios = municipios::GuardarMunicipios($request->id_estado, $request->municipio);
+            return response()->json([
+                'municipios'=>$municipios
+            ]);
+        }
+    }
+
+    //funcion para traer todos los municipios
+    public function TraerMunicipios() {
+        $municipios = municipios::getMunicipios();
+        return response()->json($municipios);
+    }
     
+
+    //funcion para traer los municipios de los modales
+    public function MunicipioGet(Request $request) {
+        $municipios = municipios::TraerMun($request->id_municipio);
+        return response()->json([
+            'municipios'=>$municipios
+        ]);
+    }
+
+    //actualizar el municipio
+    public function ActualizarMunicipio(Request $request) {
+        $municipios = municipios::ActualizarMuni($request->id_muni, $request->Municipio_nombre);
+        return response()->json([
+            'municipios'=>1
+        ]);
+    }
     
 
 }

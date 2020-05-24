@@ -134,7 +134,7 @@
                         for (let index = 0; index < response.length; index++) {
                             tabla+='<tr><th scope="row">'+response[index].ID_MUNICIPIO+'</th> <td>'
                             +response[index].NOMBRE_MUNICIPIO+'</td> <td>'
-                            +'<a href="javascript:;" style="width: 30%;" class="btn btn-block btn-warning" data="'+response[index].ID_MUNICIPIO+'"><i class="fa fa-fw fa-refresh"></i></a>'
+                            +'<a href="javascript:;" style="width: 30%;" onclick="Modal('+response[index].ID_MUNICIPIO+')" class="btn btn-block btn-warning" data="'+response[index].ID_MUNICIPIO+'"><i class="fa fa-fw fa-refresh"></i></a>'
                             +'<a href="javascript:;" style="width: 30%;" class="btn -blobtnck btn-danger" data="'+response[index].ID_MUNICIPIO+'"><i class="fa fa-fw fa-remove"></i></a>'
                             +'</td></tr>';
                         }
@@ -148,10 +148,9 @@
     }
 
     //modal que muestra los municipios para editar
-    $(function () {
-        $('.btn-warning').on('click',function(){
-            var id_municipio=$(this).attr('data');
-            // console.log(id_municipio);
+    // $(function () {
+    function Modal(id_municipio) {
+
             $.ajax({
                 cache:false,
                 dataType:"json",
@@ -167,10 +166,10 @@
                 }                     
             });
             $('#Editar').modal('show');
-        });
-    });
+    }
+
+
     //boton para editar los municipios
-    
     function Editar() {
         var Municipio_nombre = document.getElementById('Municipio_nombre').value;
         var id_muni = document.getElementById('id_muni').value;
@@ -181,6 +180,7 @@
                 cache:false,
                 dataType:"json",
                 type: 'POST',
+                async:'false',
                 url:'ActualizarMunicipio',
                 data: {Municipio_nombre:Municipio_nombre, id_muni:id_muni},
                     success: function(response){

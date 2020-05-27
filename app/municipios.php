@@ -43,4 +43,13 @@ class municipios extends Model
                     ]);
         return $municipios;
     }
+
+    public static function EliminarMun($id) {
+
+        $municipios = DB::table('municipios')
+                            ->where('ID_MUNICIPIO', '=', $id)
+                            ->delete();
+    
+        return $municipios;
+    }
 }

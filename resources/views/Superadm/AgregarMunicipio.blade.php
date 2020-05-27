@@ -95,7 +95,7 @@
                     </div>
                     <div class="modal-body">
                     <div>
-                        Esta seguro de Eliminar el pais ?
+                        Esta seguro de Eliminar el Municipio ?
                                         </div>
                     <input type="hidden" name="id_pais" id="paisElim">
                     </div>
@@ -128,7 +128,7 @@
                             tabla+='<tr><th scope="row">'+response[index].ID_MUNICIPIO+'</th> <td>'
                             +response[index].NOMBRE_MUNICIPIO+'</td> <td>'
                             +'<a href="javascript:;" style="width: 30%;" onclick="Modal('+response[index].ID_MUNICIPIO+')" class="btn btn-block btn-warning" data="'+response[index].ID_MUNICIPIO+'"><i class="fa fa-fw fa-refresh"></i></a>'
-                            +'<a href="javascript:;" style="width: 30%;" class="btn -blobtnck btn-danger" data="'+response[index].ID_MUNICIPIO+'"><i class="fa fa-fw fa-remove"></i></a>'
+                            +'<a href="javascript:;" style="width: 30%;" onclick="AbrirModalEliminar('+response[index].ID_MUNICIPIO+')" class="btn -blobtnck btn-danger" data="'+response[index].ID_MUNICIPIO+'"><i class="fa fa-fw fa-remove"></i></a>'
                             +'</td></tr>';
                         }
                         $('#contenido').html(tabla);
@@ -136,6 +136,43 @@
                 beforeSend:function(){},
                 error:function(objXMLHttpRequest){
                     $("#error").html("Ocurrio un error en el servidor").fadeIn().delay(4000).fadeOut('snow'); 
+                }
+            });
+    }
+
+    //Funcion para mostrar el modal de eliminar el municipio
+    var global
+    function AbrirModalEliminar(id) {
+        $('#Eliminar').modal('show');
+        global = id;
+    }
+
+    function Eliminar() {
+        var id = global;
+
+        $.ajax({
+                cache:false,
+                dataType:"json",
+                type: 'POST',
+                async:'false',
+                url:'EliminarMuni',
+                data: {id:id},
+                    success: function(response){
+                        if(response.municipios==1) {
+
+                            $("#buena").html("Se elimino correctamente").fadeIn().delay(4000).fadeOut('snow');
+                            $('#Eliminar').modal('hide'); 
+                            MostrarMunicipios();
+                        }else
+                        {
+                            $('#Eliminar').modal('hide');
+                            $("#error").html("Ocurrio un error en el servidor").fadeIn().delay(4000).fadeOut('snow');
+                        }
+                    },
+                beforeSend:function(){},
+                error:function(objXMLHttpRequest){
+                    $('#Eliminar').modal('hide');
+                    $("#error").html("Ocurrio un error en el servidor").fadeIn().delay(4000).fadeOut('snow');
                 }
             });
     }

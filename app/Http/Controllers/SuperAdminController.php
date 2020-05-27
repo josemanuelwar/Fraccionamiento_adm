@@ -148,6 +148,23 @@ class SuperAdminController extends Controller
         ]);
     }
 
+    //funcion para eliminar el municipio
+    public function EliminarMuni(Request $request) {
+        $municipio = municipios::EliminarMun($request->id);
+
+        if($municipio != null) {
+
+            return response()->json([
+                'municipios'=>1
+            ]);
+        }else {
+            return response()->json([
+                'municipios'=>2
+            ]);
+        }
+    }
+
+
     public function GetEstado($id_estado)
     {
        

@@ -84,5 +84,7 @@ Route::get('TraerMunicipios', 'SuperAdminController@TraerMunicipios')->name('Tra
 Route::post('MunicipioGet', 'SuperAdminController@MunicipioGet')->name('MunicipioGet');
 //actualizar el municipio
 Route::post('ActualizarMunicipio', 'SuperAdminController@ActualizarMunicipio')->name('ActualizarMunicipio');
+//eliminar municipio
+Route::post('EliminarMuni', 'SuperAdminController@EliminarMuni')->name('EliminarMuni');
 // RUTAS DE EDUARDO CERVANTES
 // ******** //// ********************////////////////

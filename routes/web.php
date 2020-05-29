@@ -38,7 +38,7 @@ Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
 Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');
 
 
-Route::middleware(['auth','verified'])->group(function (){
+// Route::middleware(['auth','verified'])->group(function (){
     Route::get('/', 'AdministradorController@principal');
     Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
 
@@ -62,7 +62,7 @@ Route::middleware(['auth','verified'])->group(function (){
 
 
 
-});
+// });
 
 // Rutas para iniciar sesión
 Auth::routes(['verify'=>true]);

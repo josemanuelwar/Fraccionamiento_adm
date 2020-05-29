@@ -10,7 +10,7 @@
     <form>
         <div class="form-group">
             <label for="formGroupExampleInput">Nombre del Fraccionamientos</label>
-            <input type="text" class="form-control" id="nombre_frac" placeholder="Example input">
+            <input type="text" class="form-control" name="nombre_frac" id="nombre_frac" placeholder="Example input">
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Selecciona el Pais</label>
@@ -24,7 +24,7 @@
             <label for="formGroupExampleInput2">Seleciona el Municipio</label>
             <select name="municipio" id="municipio" class="form-control"></select>
         </div>
-        <button type="button" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-success" onclick="GuardarFraccionamiento()">Guardar</button>
     </form>
   </div>
 </div>

@@ -84,3 +84,11 @@ municipio=()=>{
         }
     });
 }
+
+
+function GuardarFraccionamiento() {
+    var nombre_frac = document.getElementById('nombre_frac').value;
+    var pais = document.getElementById('pais').value;
+    var estado = document.getElementById('estado').value;
+    var municipio = document.getElementById('municipio').value;
+}

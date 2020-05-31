@@ -38,7 +38,7 @@ Route::get('EstadosView','SuperAdminController@EstadosView')->name('Estado');
 Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarEstados');
 
 
-// Route::middleware(['auth','verified'])->group(function (){
+Route::middleware(['auth','verified'])->group(function (){
     Route::get('/', 'AdministradorController@principal');
     Route::get('principal', ['as' => 'principal', 'uses' => 'AdministradorController@principal' ]);
 
@@ -62,7 +62,7 @@ Route::post('GuardarEstado','SuperAdminController@GuardarEstado')->name('gurdarE
 
 
 
-// });
+});
 
 // Rutas para iniciar sesión
 Auth::routes(['verify'=>true]);
@@ -79,7 +79,7 @@ Route::post('TraerEstados','SuperAdminController@TraerEstados')->name('TraerEsta
 //ruta para guardar los municipios
 Route::post('GuardarMunicipio', 'SuperAdminController@GuardarMunicipio')->name('GuardarMunicipio');
 //mostrar los municipios en la vista
-Route::get('TraerMunicipios', 'SuperAdminController@TraerMunicipios')->name('TraerMunicipios');
+Route::post('TraerMunicipios', 'SuperAdminController@TraerMunicipios')->name('TraerMunicipios');
 //Traer los municipios para el modal 
 Route::post('MunicipioGet', 'SuperAdminController@MunicipioGet')->name('MunicipioGet');
 //actualizar el municipio

@@ -30,6 +30,7 @@ pais=()=>{
 
 Estado=()=>{
     var id_pais=$('#pais').val();
+    document.getElementById("estado").length=0;
     $.ajax({
         type:'ajax',
         method:'get',
@@ -57,6 +58,7 @@ Estado=()=>{
 
 municipio=()=>{
     var id_estado=$('#estado').val();
+    document.getElementById("municipio").length=0;
     $.ajax({
         type:'ajax',
         method:'get',

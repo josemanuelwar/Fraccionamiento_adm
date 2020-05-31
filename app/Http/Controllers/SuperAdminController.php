@@ -125,8 +125,8 @@ class SuperAdminController extends Controller
     }
 
     //funcion para traer todos los municipios
-    public function TraerMunicipios() {
-        $municipios = municipios::getMunicipios();
+    public function TraerMunicipios(Request $request) {
+        $municipios = municipios::getMunicipios($request->estado);
         return response()->json($municipios);
     }
     

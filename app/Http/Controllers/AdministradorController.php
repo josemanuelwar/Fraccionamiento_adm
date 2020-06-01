@@ -14,8 +14,11 @@ class AdministradorController extends Controller
 
     public function Registro_de_fracionamientos()
     {
-        # code...
-        return view('administrador.Registrofracionamientos');
+        $paises = pais::getPaises();
+        return view('administrador.Registrofracionamientos', array(
+            'paises'=>$paises
+        ));
+        // return view('administrador.Registrofracionamientos');
     }
 
     public function Recuperarpais_ajax()

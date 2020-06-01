@@ -22,7 +22,7 @@
                 
             </select>
             <label for="">Selecionar Estado</label>
-            <select name="estado" id="estado" class="form-control">
+            <select name="estado" id="estado" onchange="MostrarMunicipios()" class="form-control">
             </select>
 
             <label for="exampleInputEmail1">Agregar Municipio</label>
@@ -113,11 +113,19 @@
         MostrarMunicipios();
     });
 
-    function MostrarMunicipios() {
+
+    // funcion para mostrar los municipios
+    function MostrarMunicipios(id_estado) {
+        var estado = document.getElementById('estado').value;
+        // console.log("del estado "+estado);
+        document.getElementById("municipio").length=0;
+        $('#contenido').empty();
+        // console.log("id del estado "+id_estado);
         $.ajax({
             type:"ajax",
-            method:"get",
+            method:"post",
             url:"TraerMunicipios",
+            data: {estado:estado},
             async:false,
             dataType:'json',
                     success: function(response){
@@ -132,6 +140,7 @@
                             +'</td></tr>';
                         }
                         $('#contenido').html(tabla);
+                        // console.log(response);
                     },
                 beforeSend:function(){},
                 error:function(objXMLHttpRequest){
@@ -192,7 +201,7 @@
                     $("#Municipio_nombre").val(response.municipios[0].NOMBRE_MUNICIPIO);
                 },
                 error:function(ex){
-                    console.log(ex);
+                    // console.log(ex);
                 }                     
             });
             $('#Editar').modal('show');
@@ -261,6 +270,8 @@
     function funcionPais() {
         var id_pais = document.getElementById('pais').value;
         document.getElementById("estado").length=0;
+        document.getElementById("municipio").length=0;
+        
         // console.log(pais);
 
         $.ajax({
@@ -278,6 +289,9 @@
                                                                         "</option>";
 
                     }
+                    var estado = document.getElementById("estado").value;
+                    // console.log("estado "+estado);
+                    MostrarMunicipios(estado);
                 },
                 beforeSend:function(){},
                 error:function(objXMLHttpRequest){

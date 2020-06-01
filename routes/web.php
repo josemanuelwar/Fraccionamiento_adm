@@ -79,7 +79,7 @@ Route::post('TraerEstados','SuperAdminController@TraerEstados')->name('TraerEsta
 //ruta para guardar los municipios
 Route::post('GuardarMunicipio', 'SuperAdminController@GuardarMunicipio')->name('GuardarMunicipio');
 //mostrar los municipios en la vista
-Route::get('TraerMunicipios', 'SuperAdminController@TraerMunicipios')->name('TraerMunicipios');
+Route::post('TraerMunicipios', 'SuperAdminController@TraerMunicipios')->name('TraerMunicipios');
 //Traer los municipios para el modal 
 Route::post('MunicipioGet', 'SuperAdminController@MunicipioGet')->name('MunicipioGet');
 //actualizar el municipio

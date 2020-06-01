@@ -30,6 +30,7 @@ pais=()=>{
 
 Estado=()=>{
     var id_pais=$('#pais').val();
+    document.getElementById("estado").length=0;
     $.ajax({
         type:'ajax',
         method:'get',
@@ -57,6 +58,7 @@ Estado=()=>{
 
 municipio=()=>{
     var id_estado=$('#estado').val();
+    document.getElementById("municipio").length=0;
     $.ajax({
         type:'ajax',
         method:'get',
@@ -83,4 +85,12 @@ municipio=()=>{
             $('.alert-danger').html('Error de comunicasion').fadeIn().delay(4000).fadeOut('snow');
         }
     });
+}
+
+
+function GuardarFraccionamiento() {
+    var nombre_frac = document.getElementById('nombre_frac').value;
+    var pais = document.getElementById('pais').value;
+    var estado = document.getElementById('estado').value;
+    var municipio = document.getElementById('municipio').value;
 }

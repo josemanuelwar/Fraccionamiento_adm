@@ -19,13 +19,11 @@ class municipios extends Model
         return $municipios;
     }
 
-    public static function getMunicipios() {
-        $data = DB::table('municipios')
-                    ->select('*')
+    public static function getMunicipios($id_estado) {
+        $municipios = DB::table('municipios')
+                    ->where('ESTADO_MUNICIPIO',$id_estado)
                     ->get();
-
-
-        return $data;
+        return $municipios;
     }
 
     public static function TraerMun($id) {

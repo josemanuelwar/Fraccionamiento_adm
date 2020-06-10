@@ -43,6 +43,7 @@ return array(
     'App\\multa' => $baseDir . '/app/multa.php',
     'App\\municipios' => $baseDir . '/app/municipios.php',
     'App\\pago' => $baseDir . '/app/pago.php',
+    'App\\pagos_de_servio' => $baseDir . '/app/pagos_de_servio.php',
     'App\\pais' => $baseDir . '/app/pais.php',
     'App\\role' => $baseDir . '/app/role.php',
     'App\\tipo_de_evento' => $baseDir . '/app/tipo_de_evento.php',

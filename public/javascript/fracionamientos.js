@@ -1,10 +1,11 @@
+'use strict'
 $(document).ready(function(){
     pais();
     Estado();
     municipio();
 });
 
-pais=()=>{
+const pais=()=>{
     $.ajax({
         type:'ajax',
         method:'get',
@@ -28,7 +29,7 @@ pais=()=>{
     });
 }
 
-Estado=()=>{
+const Estado=()=>{
     var id_pais=$('#pais').val();
     document.getElementById("estado").length=0;
     $.ajax({
@@ -56,7 +57,8 @@ Estado=()=>{
     });
 }
 
-municipio=()=>{
+const municipio=()=>{
+    
     var id_estado=$('#estado').val();
     document.getElementById("municipio").length=0;
     $.ajax({
@@ -88,9 +90,44 @@ municipio=()=>{
 }
 
 
-function GuardarFraccionamiento() {
-    var nombre_frac = document.getElementById('nombre_frac').value;
-    var pais = document.getElementById('pais').value;
-    var estado = document.getElementById('estado').value;
-    var municipio = document.getElementById('municipio').value;
-}
+var formulario=document.querySelector("#formulario");
+
+formulario.addEventListener('submit',()=>{
+    
+    var formData= new FormData(document.querySelector("#formulario"));
+    
+    var nombrefracionamiento=document.querySelector("#nombre_frac").value;
+    var municipio=document.querySelector("#municipio").value;
+    municipio=isNaN(municipio);
+
+   if(nombrefracionamiento.length == 0){
+       $('.alert-danger').html('Ingrese el nombre del Fraccionamiento ').fadeIn().delay(4000).fadeOut('snow');
+       return 0;
+   }else if(municipio == true){
+        $('.alert-danger').html('Esta bunerando el sistema').fadeIn().delay(4000).fadeOut('snow');
+        return 0;
+   }else{
+            $.ajax({
+                type:"ajax",
+                method:"post",
+                url:"Agragar_fracionamientos",
+                dataType:"json",
+                data:formData,
+                cache:false,
+                contentType:false,
+                processData:false,
+                success:function(itm){
+                    if(itm == true){
+                        $('.alert-primary').html('Se ha guardado correctamente').fadeIn().delay(4000).fadeOut('snow');
+                        window.location.href="/";          
+                    }else if(itm == false){
+                        $('.alert-danger').html('Error en el guardado ').fadeIn().delay(4000).fadeOut('snow');    
+                    }
+                },
+                error(erro){
+                    $('.alert-danger').html('Error de comunicasion').fadeIn().delay(4000).fadeOut('snow');         
+                }
+            });
+    }
+
+});

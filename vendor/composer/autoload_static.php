@@ -502,6 +502,7 @@ class ComposerStaticInit7aee7a3d945d1c12c15e50ff0658038b
         'App\\multa' => __DIR__ . '/../..' . '/app/multa.php',
         'App\\municipios' => __DIR__ . '/../..' . '/app/municipios.php',
         'App\\pago' => __DIR__ . '/../..' . '/app/pago.php',
+        'App\\pagos_de_servio' => __DIR__ . '/../..' . '/app/pagos_de_servio.php',
         'App\\pais' => __DIR__ . '/../..' . '/app/pais.php',
         'App\\role' => __DIR__ . '/../..' . '/app/role.php',
         'App\\tipo_de_evento' => __DIR__ . '/../..' . '/app/tipo_de_evento.php',

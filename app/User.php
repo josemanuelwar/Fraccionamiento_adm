@@ -38,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     protected $primaryKey = 'id_us';
 
+    
     //  login
     public function getAuthPassword()
     {
@@ -64,6 +65,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function setPasswordAttribute($value)
     {
         $this->contrasena_us = $value;
+    }
+
+    public function getIdusuario ()
+    {
+        return $this->id_us;
     }
 
 }

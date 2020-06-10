@@ -1,15 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\pais;
 use App\estado;
 use App\municipios;
+use App\User;
+use App\fracionamiento;
+use App\imagen;
 class AdministradorController extends Controller
 {
     public function principal() {
-        return view('administrador.principal');
+        if(Auth::check()){
+            $id=Auth::id();
+            $fracio=new fracionamiento();
+            $resutdo=$fracio->Imagefrac($id);
+            return view('administrador.principal',compact('resutdo'));
+        }
     }
 
     public function Registro_de_fracionamientos()
@@ -40,5 +48,52 @@ class AdministradorController extends Controller
         $municipio=new municipios();
         $m=$municipio::select('ID_MUNICIPIO','NOMBRE_MUNICIPIO')->where('ESTADO_MUNICIPIO',$id_estados)->get();
         return response()->json($m);
+    }
+
+    public function AgregarFracionamiento(Request $request)
+    {
+        if(Auth::check()){
+            $validador=\Validator::make($request->all(),[
+                'nombre_frac' => 'required',
+                'municipio' => 'required'
+            ]);
+            
+            $fra=new fracionamiento();
+
+            $data = array('NOMBRE_FRAC' =>$request->nombre_frac,
+                            'MUNICIPIO_FRAC' => $request->municipio,
+                            'ADMIN_FRAC'=>Auth::id());
+            $idfra=$fra->GetIDfracion($data);
+            if($idfra > 0){
+                if($request->hasFile("imagen")){
+                    $file = $request->file('imagen');
+                    $nombre = time().$file->getClientOriginalName();
+                    $archivo = \File::get($file);
+                    $extencion=$file->getClientOriginalExtension(); 
+                    
+                    if($extencion == "jpg" || $extencion == "png" || $extencion=="jpeg”"){
+                        $archivo1 = base64_encode($archivo);
+
+                        $dato = array('NOMBRE_IMG' =>$nombre ,
+                                    'URL_IMG'  => $archivo1,
+                                    'ID_FRAC_IMG' => $idfra,
+                                'EXTENCION_IMG'=>$extencion);
+                        $img= new imagen();
+
+                        $image=$img->Insertar($dato);
+                    }
+                    
+
+                    if($image > 0){
+                        return response()->json(true);
+                    }else{
+                        return response()->json(false);
+                    }    
+                }    
+            }else{
+                return response()->json(false);
+            }
+        }
+        
     }
 }

@@ -44,6 +44,10 @@ Route::middleware(['auth','verified'])->group(function (){
 
     /** rutas josemauel */
     Route::get('Registro_frac','AdministradorController@Registro_de_fracionamientos');
+    Route::post('Agragar_fracionamientos','AdministradorController@AgregarFracionamiento')->name("registro");
+
+
+
     Route::get('recupear_pais','AdministradorController@Recuperarpais_ajax');
     Route::get('recuperar_estados/{id}','AdministradorController@RecuperarEstado');
     Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunicipios');

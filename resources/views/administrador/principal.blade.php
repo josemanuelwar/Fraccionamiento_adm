@@ -27,8 +27,8 @@
                         </td>
                         <td>
                             <a href="#" class="btn btn-light">Ir al fracionamientos</a>
-                            <a href="#" class="btn btn-light">Editar</a>
-                            <a href="#" class="btn btn-danger">Eliminar</a>
+                            <a href="/Editar_fracionamiento/{{$key->ID_FRAC}}" class="btn btn-light">Editar</a>
+                            <a href="/eliminar/{{$key->ID_FRAC}}" class="btn btn-danger">Eliminar</a>
                         </td>               
                     </tr>
                     @empty

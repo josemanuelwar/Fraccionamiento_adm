@@ -9,7 +9,7 @@ const pais=()=>{
     $.ajax({
         type:'ajax',
         method:'get',
-        url:'recupear_pais',
+        url:'/recupear_pais',
         async:false,
         dataType:'json',
         success:function(itm){
@@ -31,11 +31,11 @@ const pais=()=>{
 
 const Estado=()=>{
     var id_pais=$('#pais').val();
-    document.getElementById("estado").length=0;
+    ///document.getElementById("estado").length=0;
     $.ajax({
         type:'ajax',
         method:'get',
-        url:'recuperar_estados/'+id_pais,
+        url:'/recuperar_estados/'+id_pais,
         async:false,
         dataType:'json',
         success:function(itm){
@@ -64,7 +64,7 @@ const municipio=()=>{
     $.ajax({
         type:'ajax',
         method:'get',
-        url:'recuperar_municipios/'+id_estado,
+        url:'/recuperar_municipios/'+id_estado,
         async:false,
         dataType:'JSON',
         success:function(itm)

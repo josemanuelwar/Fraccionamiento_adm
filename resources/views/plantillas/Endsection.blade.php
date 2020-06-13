@@ -15,7 +15,7 @@
  <!-- BEGIN VENDOR JS-->
  <!-- BEGIN PAGE VENDOR JS-->
 <script src="{{asset('app-assets/vendors/js/jqBootstrapValidation.js')}}" type="text/javascript"></script>
- {{-- <script src="{{'app-assets/vendors/js/chartist.min.js'}}" type="text/javascript"></script> --}}
+ {{-- <script src="{{'asset(app-assets/vendors/js/chartist.min.js')}}" type="text/javascript"></script> --}}
  <!-- END PAGE VENDOR JS-->
  <!-- BEGIN APEX JS-->
  <script src="{{asset('app-assets/js/app-sidebar.js')}}" type="text/javascript"></script>
@@ -23,8 +23,8 @@
  <script src="{{asset('app-assets/js/customizer.js')}}" type="text/javascript"></script>
  <!-- END APEX JS-->
  <!-- BEGIN PAGE LEVEL JS-->
-<script src="{{'app-assets/vendors/js/jqBootstrapValidation.js'}}" type="text/javascript"></script>
- {{-- <script src="{{'app-assets/js/dashboard1.js'}}" type="text/javascript"></script> --}}
+<script src="{{asset('app-assets/vendors/js/jqBootstrapValidation.js')}}" type="text/javascript"></script>
+ {{-- <script src="{{asset('app-assets/js/dashboard1.js')}}" type="text/javascript"></script> --}}
 
 <script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/localization/messages_es.js"></script>

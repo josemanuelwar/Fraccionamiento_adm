@@ -1,0 +1,5 @@
+ALTER TABLE `fracionamientos`
+	ADD COLUMN `Activo` ENUM('1','0') NULL DEFAULT NULL AFTER `ADMIN_FRAC`;
+
+ALTER TABLE `fracionamientos`
+	CHANGE COLUMN `Activo` `ACTIVO_FRAC` ENUM('1','0') NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci' AFTER `ADMIN_FRAC`;

@@ -14,4 +14,11 @@ class imagen extends Model
         $id = DB::table('imagens')->insertGetId($data);
         return $id;
     }
+
+    public function Actulizar($id_imagen,$data)
+    {
+        $update = DB::table('imagens')->where('ID_IMAGEN',$id_imagen)->update($data);
+        return $update;
+        
+    }
 }

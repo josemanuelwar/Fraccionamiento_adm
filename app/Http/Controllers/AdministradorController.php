@@ -153,7 +153,9 @@ class AdministradorController extends Controller
             
         }                        
     }
-
+    /** eliminamos el fracionamientos pero solo cambiamos su estatus de activo('1') a no activo('0')
+     *  @param($id) parametro resivimos el id del fraccionamiento
+    */
     public function eliminarfracionamiento($id)
     {
         $data = array('ACTIVO_FRAC' => '0', );

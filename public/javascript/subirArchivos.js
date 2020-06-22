@@ -33,7 +33,6 @@ $(document).ready(function(){
                             $("#porsentage").html(cargpor);
                             $("#barra").progressbar( {max:100, value:x} );
                             clearInterval(progerso);
-                            console.log(item);
                             if(item == "true"){
                                 $("#buena").html("Se han guardado correctamente").fadeIn().delay(4000).fadeOut().show();
                                 $("#cargando").delay(4000).fadeOut();
@@ -66,9 +65,6 @@ $(document).ready(function(){
    
 });
 
-
-
-
 function checar_archivos() {
    var id= $("#idfr").val();
    var tex=$("#Archivos");
@@ -83,7 +79,6 @@ function checar_archivos() {
             tex.html('<center> <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></center>')
         },
         success:function(item){
-             console.log(item);
              if(item.length != 0){
                  $("#id_formularios").fadeOut();
                 var regalmento=`

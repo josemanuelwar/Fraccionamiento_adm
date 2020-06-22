@@ -36,8 +36,8 @@ $(document).ready(function(){
                             console.log(item);
                             if(item == "true"){
                                 $("#buena").html("Se han guardado correctamente").fadeIn().delay(4000).fadeOut().show();
-                                checar_archivos();
                                 $("#cargando").delay(4000).fadeOut();
+                                checar_archivos();
                             }else{
                                 $(".alert-danger").html("Error al subir los archivos").fadeIn().delay(4000).fadeOut().show();
                                 $("#cargando").delay(4000).fadeOut();  

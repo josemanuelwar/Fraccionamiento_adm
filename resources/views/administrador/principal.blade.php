@@ -27,8 +27,9 @@
                         </td>
                         <td>
                             <a href="#" class="btn btn-light">Ir al fracionamientos</a>
-                            <a href="/Editar_fracionamiento/{{$key->ID_FRAC}}" class="btn btn-light">Editar</a>
-                            <a href="/eliminar/{{$key->ID_FRAC}}" class="btn btn-danger">Eliminar</a>
+                            <a href="/Agregarplanoreglamento/{{encriptarid($key->ID_FRAC)}}" class="btn btn-light">Agregar Plano y Regalmento</a>
+                            <a href="/Editar_fracionamiento/{{encriptarid($key->ID_FRAC)}}" class="btn btn-light">Editar</a>
+                            <a href="/eliminar/{{encriptarid($key->ID_FRAC)}}" class="btn btn-danger">Eliminar</a>
                         </td>               
                     </tr>
                     @empty

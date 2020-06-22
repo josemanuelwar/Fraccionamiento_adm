@@ -1,8 +1,6 @@
 @include('plantillas.header')
 @include('plantillas.menu')
 @include('plantillas.section')
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
 <div class="alert alert-danger" role="alert" style="display:none;"></div>
 
 <div class="alert alert-primary" id="buena" role="alert" style="display:none;"></div>
@@ -38,7 +36,6 @@
     </form>
   </div>
 </div>
-
 @include('plantillas.Endsection')
 @include('plantillas.footer')
 <script src="javascript/Fracionamientos.js"></script>

@@ -9,6 +9,7 @@ use App\municipios;
 use App\User;
 use App\fracionamiento;
 use App\imagen;
+use App\archivo;
 class AdministradorController extends Controller
 {
     public function principal() {
@@ -53,7 +54,7 @@ class AdministradorController extends Controller
     public function AgregarFracionamiento(Request $request)
     {
         if(Auth::check()){
-            $validador=\Validator::make($request->all(),[
+            $request->validate([
                 'nombre_frac' => 'required',
                 'municipio' => 'required'
             ]);
@@ -103,7 +104,7 @@ class AdministradorController extends Controller
     public function Editar_fracionamiento($id_frac)
     {
         $fra=new fracionamiento();
-        $resultado=$fra->fracimg($id_frac);
+        $resultado=$fra->fracimg(base64_decode($id_frac));
         $pais = new pais();
         $p=$pais::all();
         $data = array('resultado' => $resultado ,'pais' => $p);
@@ -160,7 +161,72 @@ class AdministradorController extends Controller
     {
         $data = array('ACTIVO_FRAC' => '0', );
         $fra=new fracionamiento();
-        $resultado=$fra->ActulizarFracionamiento($id,$data);
+        $resultado=$fra->ActulizarFracionamiento(base64_decode($id),$data);
         return redirect("/");        
     }
+
+    public function Agregarplanoreglamento($id)
+    {
+        $data = array('id' =>$id);
+        return View("administrador.Agregarplanoreglamento",$data);
+    }
+
+    public function Mostrar_archivosajax($id)
+    {
+        $archivo=new archivo();
+        $restpuesta=$archivo->Select(base64_decode($id));
+        return response()->json($restpuesta);        
+    }
+
+    public function GuardandoArchivos(Request $request)
+    {
+        $verdarerofalso="false";
+        $bandera="false";
+        if($request->hasFile("Reglamento"))
+            {
+                    $file = $request->file('Reglamento');
+                    $nombre = time().$file->getClientOriginalName();
+                    $archivo = \File::get($file);
+                    $extencion=$file->getClientOriginalExtension();
+                    if($extencion == "pdf"){
+                        \Storage::disk('public')->put($nombre,  \File::get($file));
+                        $data = array('NOMBRE_ARCHIVO' =>"Reglamento" ,
+                              'URL_ARCHIVO'=> \Storage::url($nombre),
+                            'ID_FRACT_ARCHIVO' =>base64_decode($request->id_frac));
+
+                        $archivos=new archivo();
+                        $respuesta=$archivos->Guardar($data);
+                        if($respuesta)
+                        {
+                            $verdarerofalso="true";
+                        }
+                    }                
+            }
+            if($request->hasFile("plano"))
+            {
+                $file = $request->file('plano');
+                $nombre = time().$file->getClientOriginalName();
+                $archivo = \File::get($file);
+                $extencion=$file->getClientOriginalExtension();
+                if($extencion == "pdf")
+                {
+                    \Storage::disk('public')->put($nombre,  \File::get($file));
+                    $data = array('NOMBRE_ARCHIVO' =>"Plano" ,
+                          'URL_ARCHIVO'=> \Storage::url($nombre),
+                        'ID_FRACT_ARCHIVO' =>base64_decode($request->id_frac));
+
+                    $archivos=new archivo();
+                    $respuesta=$archivos->Guardar($data);
+                    if($respuesta)
+                    {
+                        $bandera="true";
+                    }
+            }
+        }
+        if($bandera=="true" && $verdarerofalso=="true"){
+            return response()->json("true");
+        }else{
+            return response()->json("false");
+        }
+    }    
 }

@@ -51,6 +51,9 @@ Route::middleware(['auth','verified'])->group(function (){
     Route::get('recupear_pais','AdministradorController@Recuperarpais_ajax');
     Route::get('recuperar_estados/{id}','AdministradorController@RecuperarEstado');
     Route::get('recuperar_municipios/{id}','AdministradorController@RecuperandoMunicipios');
+    Route::get('/Agregarplanoreglamento/{id}','AdministradorController@Agregarplanoreglamento')->name('Agregar plano');
+    Route::get('/MostrarArchivos/{id}','AdministradorController@Mostrar_archivosajax')->name('Agregar plano');
+    Route::post('/Guardar_archivos/','AdministradorController@GuardandoArchivos')->name('Agregar plano');
     /**Alta a lo pasis y estados */
     Route::get('Agregar_region','SuperAdminController@index');
     Route::post('/agregarpais','SuperAdminController@Guardar_pais_ajax');
